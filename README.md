@@ -16,7 +16,7 @@ $ yarn install
 # or with npm
 $ npm install
 
-$ cd ios && pod install
+$ cd ios && pod install && cd ..
 
 ```
 ## Launch iOS
