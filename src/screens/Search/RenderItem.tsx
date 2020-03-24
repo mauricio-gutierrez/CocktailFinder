@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {Cocktail} from '../../helpers/cocktails';
 import {ListItem} from 'react-native-elements';
 import styles from './styles';
