@@ -1,26 +1,15 @@
 import React, {useState} from 'react';
 import {SafeAreaView, View, FlatList, StatusBar} from 'react-native';
 import State from '../../reducers';
-import {SearchBar, ListItem} from 'react-native-elements';
+import {SearchBar} from 'react-native-elements';
 import {connect} from 'react-redux';
 import * as coctailActions from '../../actions/cocktail';
 import styles from './styles';
 import {Cocktail} from '../../helpers/cocktails';
+import {renderItem} from './RenderItem'
 
 const keyExtractor = (item: Cocktail, index: any) => index.toString();
 
-type RenderItemType = {
-  item: Cocktail;
-};
-const renderItem = ({item}: RenderItemType) => (
-  <ListItem
-    style={styles.item}
-    chevron={false}
-    title={item.strDrink}
-    leftAvatar={{source: {uri: item.strDrinkThumb}}}
-    bottomDivider
-  />
-);
 
 type Props = {
   search: (search: string) => void;
