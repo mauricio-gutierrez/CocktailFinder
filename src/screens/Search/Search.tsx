@@ -8,7 +8,7 @@ import styles from './styles';
 import {Cocktail} from '../../helpers/cocktails';
 import {renderItem} from './RenderItem'
 
-const keyExtractor = (item: Cocktail, index: any) => index.toString();
+const keyExtractor = (item: Cocktail, index: any) => item.idDrink;
 
 
 type SearchProps = {
