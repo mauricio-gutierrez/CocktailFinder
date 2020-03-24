@@ -1,43 +1,29 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  StatusBar,
-} from 'react-native';
 
-declare var global: {HermesInternal: null | {}};
+import Home from './src/screens/Home/Home';
+import Search from './src/screens/Search/Search';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware} from 'redux';
+import reducers from './src/reducers';
+import reduxThunk from 'redux-thunk';
+import {StackParamList} from 'src/helpers/navigation'
 
-const App = () => {
+const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
+const Stack = createStackNavigator<StackParamList>();
+
+function App() {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={styles.wrapper}>
-        <Text style={styles.text}>CocktailFinder</Text>
-      </SafeAreaView>
-    </>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator headerMode="none">
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Search" component={Search} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
-};
-
-const styles = StyleSheet.create({
-  wrapper: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    height: '100%',
-  },
-  text: {
-    textAlign: 'center',
-  },
-});
+}
 
 export default App;
