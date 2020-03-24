@@ -11,14 +11,14 @@ import {renderItem} from './RenderItem'
 const keyExtractor = (item: Cocktail, index: any) => index.toString();
 
 
-type Props = {
+type SearchProps = {
   search: (search: string) => void;
   clean: () => void;
   searching: boolean;
   cocktails: [];
 };
 
-const Search: React.FC<Props> = ({search, clean, searching, cocktails}) => {
+const Search: React.FC<SearchProps> = ({search, clean, searching, cocktails}) => {
   const [searchStr, setSearchStr] = useState('');
 
   const updateSearch = (searchInput: string) => {
